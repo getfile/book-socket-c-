@@ -1,0 +1,409 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TCP简介 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="introUDP.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    本书说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="introTCP.html">
+            
+                <a href="introTCP.html">
+            
+                    
+                    TCP简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="introUDP.html">
+            
+                <a href="introUDP.html">
+            
+                    
+                    UDP简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="TCPnUDP.html">
+            
+                <a href="TCPnUDP.html">
+            
+                    
+                    TCP/UDP对比
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="broadcast.html">
+            
+                <a href="broadcast.html">
+            
+                    
+                    单播, 广播, 多播
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="socket.html">
+            
+                <a href="socket.html">
+            
+                    
+                    Socket编程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="udp-socket.html">
+            
+                <a href="udp-socket.html">
+            
+                    
+                    用socket实现UDP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="udp-udpclient.html">
+            
+                <a href="udp-udpclient.html">
+            
+                    
+                    用udpclient实现UDP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="tcp-socket.html">
+            
+                <a href="tcp-socket.html">
+            
+                    
+                    用socket实现TCP: 同步方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="tcp-socket-yb.html">
+            
+                <a href="tcp-socket-yb.html">
+            
+                    
+                    用socket实现TCP: 异步方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="tcp-tcpclient.html">
+            
+                <a href="tcp-tcpclient.html">
+            
+                    
+                    用tcpclient实现TCP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >TCP简介</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h5 id="&#x5B9A;&#x4E49;">&#x5B9A;&#x4E49;</h5>
+<ul>
+<li>TCP&#xFF08;TransmissionControl Protocol&#xFF09;&#x4F20;&#x8F93;&#x63A7;&#x5236;&#x534F;&#x8BAE;&#x3002;
+  &#x662F;&#x4E00;&#x79CD;&#x53EF;&#x9760;&#x7684;&#x3001;&#x9762;&#x5411;&#x8FDE;&#x63A5;&#x7684;&#x534F;&#x8BAE;&#xFF08;eg:&#x6253;&#x7535;&#x8BDD;&#xFF09;&#x3001;&#x4F20;&#x8F93;&#x6548;&#x7387;&#x4F4E;&#x5168;&#x53CC;&#x5DE5;&#x901A;&#x4FE1;&#xFF08;&#x53D1;&#x9001;&#x7F13;&#x5B58;&amp;&#x63A5;&#x6536;&#x7F13;&#x5B58;&#xFF09;&#x3001;&#x9762;&#x5411;&#x5B57;&#x8282;&#x6D41;&#x3002;&#x4F7F;&#x7528;TCP&#x7684;&#x5E94;&#x7528;&#xFF1A;Web&#x6D4F;&#x89C8;&#x5668;&#xFF1B;&#x7535;&#x5B50;&#x90AE;&#x4EF6;&#x3001;&#x6587;&#x4EF6;&#x4F20;&#x8F93;&#x7A0B;&#x5E8F;&#x3002;</li>
+</ul>
+<h5 id="&#x7279;&#x6027;">&#x7279;&#x6027;</h5>
+<ul>
+<li><h6 id="&#x662F;&#x9762;&#x5411;&#x8FDE;&#x63A5;&#x7684;&#x534F;&#x8BAE;">&#x662F;&#x9762;&#x5411;&#x8FDE;&#x63A5;&#x7684;&#x534F;&#x8BAE;</h6>
+<blockquote>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5728;&#x6536;&#x53D1;&#x6570;&#x636E;&#x524D;&#xFF0C;&#x5FC5;&#x987B;&#x548C;&#x5BF9;&#x65B9;&#x5EFA;&#x7ACB;&#x53EF;&#x9760;&#x7684;&#x8FDE;&#x63A5;&#x3002;&#x4E00;&#x4E2A;TCP&#x8FDE;&#x63A5;&#x5FC5;&#x987B;&#x8981;&#x7ECF;&#x8FC7;&#x4E09;&#x6B21;&#x201C;&#x5BF9;&#x8BDD;&#x201D;&#x624D;&#x80FD;&#x5EFA;&#x7ACB;&#x8D77;&#x6765;&#x3002;&#x63A5;&#x6536;&#x53CC;&#x65B9;&#x72EC;&#x5360;&#x4E00;&#x4E2A;&#x901A;&#x9053;&#x3002;</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><h6 id="&#x9762;&#x5411;&#x5B57;&#x8282;&#x6D41;">&#x9762;&#x5411;&#x5B57;&#x8282;&#x6D41;</h6>
+<blockquote>
+<p>TCP&#x5C06;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x770B;&#x6210;&#x662F;&#x4E00;&#x8FDE;&#x4E32;&#x7684;&#x65E0;&#x7ED3;&#x6784;&#x7684;&#x5B57;&#x8282;&#x6D41;&#x3002;&#x6BCF;&#x4E2A;TCP&#x5957;&#x63A5;&#x53E3;&#x6709;&#x4E00;&#x4E2A;&#x53D1;&#x9001;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x5982;&#x679C;&#x5B57;&#x8282;&#x6D41;&#x592A;&#x957F;&#x65F6;&#xFF0C;TCP&#x4F1A;&#x5C06;&#x5176;&#x62C6;&#x5206;&#x8FDB;&#x884C;&#x53D1;&#x9001;&#x3002;
+  &#x5F53;&#x5B57;&#x8282;&#x6D41;&#x592A;&#x77ED;&#x65F6;&#xFF0C;TCP&#x4F1A;&#x7B49;&#x5F85;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x7684;&#x5B57;&#x8282;&#x6D41;&#x8FBE;&#x5230;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x65F6;&#x518D;&#x6784;&#x6210;&#x62A5;&#x6587;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#xFF0C;TCP&#x53D1;&#x7ED9;&#x5BF9;&#x65B9;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5BF9;&#x65B9;&#x5728;&#x6536;&#x5230;&#x6570;&#x636E;&#x65F6;&#x5FC5;&#x987B;&#x7ED9;&#x77DB;&#x786E;&#x8BA4;&#xFF0C;
+  &#x53EA;&#x6709;&#x5728;&#x6536;&#x5230;&#x5BF9;&#x65B9;&#x7684;&#x786E;&#x8BA4;&#x65F6;&#xFF0C;&#x672C;&#x65B9;TCP&#x624D;&#x4F1A;&#x628A;TCP&#x53D1;&#x9001;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5220;&#x9664;&#x3002;</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><h6 id="3&#x6B21;&#x63E1;&#x624B;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF0C;4&#x6B21;&#x63E1;&#x624B;&#x91CA;&#x653E;&#x8FDE;&#x63A5;">3&#x6B21;&#x63E1;&#x624B;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF0C;4&#x6B21;&#x63E1;&#x624B;&#x91CA;&#x653E;&#x8FDE;&#x63A5;</h6>
+<p><img src="https://img-blog.csdn.net/20180512110847765" alt=""></p>
+<blockquote>
+<p>ACK&#xFF1A;TCP&#x62A5;&#x5934;&#x7684;&#x63A7;&#x5236;&#x4F4D;&#x4E4B;&#x4E00;&#xFF0C;&#x8868;&#x793A;&#x786E;&#x8BA4;&#x53F7;&#x662F;&#x5426;&#x6709;&#x6548;&#x3002;&#x53EA;&#x6709;&#x5F53;ACK=1&#x65F6;&#xFF0C;&#x786E;&#x8BA4;&#x53F7;&#x624D;&#x6709;&#x6548;&#xFF0C;&#x5F53;ACK=0&#x65F6;&#xFF0C;&#x786E;&#x8BA4;&#x53F7;&#x65E0;&#x6548;&#xFF0C;&#x8FD9;&#x65F6;&#x4F1A;&#x8981;&#x6C42;&#x91CD;&#x4F20;&#x6570;&#x636E;&#xFF0C;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x7684;&#x5B8C;&#x6574;&#x6027;&#x3002;</p>
+<p>&#x786E;&#x8BA4;&#x53F7;&#xFF1A;&#x7528;&#x5B83;&#x6765;&#x544A;&#x8BC9;&#x53D1;&#x9001;&#x7AEF;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#x7684;&#x5E8F;&#x5217;&#x53F7;&#x4E4B;&#x524D;&#x7684;&#x6570;&#x636E;&#x6BB5;&#x90FD;&#x6536;&#x5230;&#x4E86;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x786E;&#x8BA4;&#x53F7;&#x4E3A;X&#xFF0C;&#x5219;&#x8868;&#x793A;&#x524D;X-1&#x4E2A;&#x6570;&#x636E;&#x6BB5;&#x90FD;&#x6536;&#x5230;&#x4E86;&#x3002;</p>
+<p>SYN&#xFF1A;&#x540C;&#x6B65;&#x5E8F;&#x5217;&#x53F7;&#xFF0C;TCP&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x65F6;&#x5C06;&#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;1&#x3002;</p>
+<p>FIN&#xFF1A;&#x53D1;&#x9001;&#x7AEF;&#x5B8C;&#x6210;&#x53D1;&#x9001;&#x4EFB;&#x52A1;&#x4F4D;&#xFF0C;&#x5F53;TCP&#x5B8C;&#x6210;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x9700;&#x8981;&#x65AD;&#x5F00;&#x65F6;&#xFF0C;&#x63D0;&#x51FA;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x7684;&#x4E00;&#x65B9;&#x5C06;&#x8FD9;&#x4F4D;&#x7F6E;1&#x3002;</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="tcp&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x8FC7;&#x7A0B;">TCP&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x8FC7;&#x7A0B;</h5>
+<p><img src="https://img-blog.csdn.net/20180512111108972" alt=""></p>
+<ol>
+<li>&#x4E3B;&#x673A;A&#x901A;&#x8FC7;&#x5411;&#x4E3B;&#x673A;B&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x542B;&#x6709;&#x540C;&#x6B65;&#x5E8F;&#x5217;&#x53F7;&#x7684;&#x6807;&#x5FD7;&#x4F4D;&#x7684;&#x6570;&#x636E;&#x6BB5;&#x7ED9;&#x4E3B;&#x673A;B &#xFF0C;&#x5411;&#x4E3B;&#x673A;B &#x8BF7;&#x6C42;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x6BB5;&#xFF0C;&#x4E3B;&#x673A;A&#x544A;&#x8BC9;&#x4E3B;&#x673A;B &#x4E24;&#x4EF6;&#x4E8B;&#xFF1A;&#x6211;&#x60F3;&#x8981;&#x548C;&#x4F60;&#x901A;&#x4FE1;&#xFF1B;&#x4F60;&#x53EF;&#x4EE5;&#x7528;&#x54EA;&#x4E2A;&#x5E8F;&#x5217;&#x53F7;&#x4F5C;&#x4E3A;&#x8D77;&#x59CB;&#x6570;&#x636E;&#x6BB5;&#x6765;&#x56DE;&#x5E94;&#x6211;&#x3002;</li>
+<li>&#x4E3B;&#x673A;B &#x6536;&#x5230;&#x4E3B;&#x673A;A&#x7684;&#x8BF7;&#x6C42;&#x540E;&#xFF0C;&#x7528;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x786E;&#x8BA4;&#x5E94;&#x7B54;(ACK)&#x548C;&#x540C;&#x6B65;&#x5E8F;&#x5217;&#x53F7;(SYN)&#x6807;&#x5FD7;&#x4F4D;&#x7684;&#x6570;&#x636E;&#x6BB5;&#x54CD;&#x5E94;&#x4E3B;&#x673A;A&#xFF0C;&#x4E5F;&#x544A;&#x8BC9;&#x4E3B;&#x673A;A&#x4E24;&#x4EF6;&#x4E8B;&#xFF1A;&#x6211;&#x5DF2;&#x7ECF;&#x6536;&#x5230;&#x4F60;&#x7684;&#x8BF7;&#x6C42;&#x4E86;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x8F93;&#x6570;&#x636E;&#x4E86;&#xFF1B;&#x4F60;&#x8981;&#x7528;&#x54EA;&#x4E2A;&#x5E8F;&#x5217;&#x53F7;&#x4F5C;&#x4E3A;&#x8D77;&#x59CB;&#x6570;&#x636E;&#x6BB5;&#x6765;&#x56DE;&#x5E94;&#x6211;&#x3002;</li>
+<li>&#x4E3B;&#x673A;A&#x6536;&#x5230;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x6BB5;&#x540E;&#xFF0C;&#x518D;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x786E;&#x8BA4;&#x5E94;&#x7B54;&#xFF0C;&#x786E;&#x8BA4;&#x5DF2;&#x6536;&#x5230;&#x4E3B;&#x673A;B &#x7684;&#x6570;&#x636E;&#x6BB5;&#xFF1A;&#x6211;&#x5DF2;&#x6536;&#x5230;&#x56DE;&#x590D;&#xFF0C;&#x6211;&#x73B0;&#x5728;&#x8981;&#x5F00;&#x59CB;&#x4F20;&#x8F93;&#x5B9E;&#x9645;&#x6570;&#x636E;&#x4E86;&#x3002;</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 本书说明">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="introUDP.html" class="navigation navigation-next " aria-label="Next page: UDP简介">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"TCP简介","level":"1.2","depth":1,"next":{"title":"UDP简介","level":"1.3","depth":1,"path":"introUDP.md","ref":"introUDP.md","articles":[]},"previous":{"title":"本书说明","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"introTCP.md","mtime":"2019-05-29T14:18:47.252Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-30T03:41:54.637Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
