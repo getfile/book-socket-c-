@@ -1,0 +1,476 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>用udpclient实现UDP · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="tcp-socket.html" />
+    
+    
+    <link rel="prev" href="udp-socket.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    本书说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="introTCP.html">
+            
+                <a href="introTCP.html">
+            
+                    
+                    TCP简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="introUDP.html">
+            
+                <a href="introUDP.html">
+            
+                    
+                    UDP简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="TCPnUDP.html">
+            
+                <a href="TCPnUDP.html">
+            
+                    
+                    TCP/UDP对比
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="broadcast.html">
+            
+                <a href="broadcast.html">
+            
+                    
+                    单播, 广播, 多播
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="socket.html">
+            
+                <a href="socket.html">
+            
+                    
+                    Socket编程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="udp-socket.html">
+            
+                <a href="udp-socket.html">
+            
+                    
+                    用socket实现UDP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.2" data-path="udp-udpclient.html">
+            
+                <a href="udp-udpclient.html">
+            
+                    
+                    用udpclient实现UDP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="tcp-socket.html">
+            
+                <a href="tcp-socket.html">
+            
+                    
+                    用socket实现TCP: 同步方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="tcp-socket-yb.html">
+            
+                <a href="tcp-socket-yb.html">
+            
+                    
+                    用socket实现TCP: 异步方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="tcp-tcpclient.html">
+            
+                <a href="tcp-tcpclient.html">
+            
+                    
+                    用tcpclient实现TCP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >用udpclient实现UDP</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h4 id="&#x7B80;&#x4ECB;">&#x7B80;&#x4ECB;</h4>
+<ul>
+<li><p>&#xFF08;1&#xFF09;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;</p>
+<pre><code>  &#x7ED1;&#x5B9A;&#x6307;&#x5B9A;&#x7684;&#x7AEF;&#x53E3;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7684;&#x63A5;&#x6536;&#x4E0E;&#x53D1;&#x9001;&#xFF1A;
+  UdpClient  udpClient= new UdpClient(11000);
+
+  &#x4F7F;&#x7528;&#x968F;&#x673A;&#x7684;&#x7AEF;&#x53E3;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7684;&#x63A5;&#x6536;&#x4E0E;&#x53D1;&#x9001;&#xFF1A;
+  UdpClient  udpClient= new UdpClient(0);
+  &#x4F7F;&#x7528;&#x968F;&#x673A;&#x7AEF;&#x53E3;&#x8FDB;&#x884C;&#x53D1;&#x9001;&#xFF0C;&#x6BCF;&#x6B21;&#x53D1;&#x51FA;&#x53BB;&#x7684;&#x4FE1;&#x606F;&#x7AEF;&#x53E3;&#x53F7;&#x7801;&#x90FD;&#x662F;&#x4E0D;&#x540C;&#x7684;&#xFF0C;&#x8FD9;&#x6837;&#x63A5;&#x6536;&#x65B9;&#x8981;&#x628A;&#x4FE1;&#x606F;&#x53D1;&#x56DE;&#x6765;&#xFF0C;&#x5C31;&#x6CA1;&#x529E;&#x6CD5;&#x4E86;&#x3002;
+
+  &#x7ED1;&#x5B9A;&#x6307;&#x5B9A;&#x7EC8;&#x7ED3;&#x70B9;&#xFF0C;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7684;&#x53D1;&#x9001;&#xFF1A;
+  UdpClient  udpClient= new UdpClient(IPEndPoint);
+</code></pre></li>
+</ul>
+<ul>
+<li>&#xFF08;2&#xFF09;&#x53D1;&#x9001;&#x6570;&#x636E;
+  &#x53D1;&#x9001;&#x7684;&#x65F6;&#x5019;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x6765;&#x6307;&#x5B9A;&#x63A5;&#x6536;&#x65B9;&#x7684;&#x5730;&#x5740;<pre><code>  Send(byte[],Int32,IpEndPoint)
+  Send(byte[],Int32,String,Int32)
+  Send(byte[],Int32)
+  &#x5728;&#x4F7F;&#x7528;&#x7B2C;&#x4E09;&#x4E2A;send&#x65B9;&#x6CD5;&#x65F6;&#x7531;&#x4E8E;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x8FDC;&#x7AEF;&#x5730;&#x5740;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x4E4B;&#x524D;&#x4F7F;&#x7528;Connect&#x65B9;&#x6CD5;&#x6765;&#x6307;&#x5B9A;&#x8FDC;&#x7AEF;&#x5730;&#x5740;&#x3002;
+</code></pre></li>
+</ul>
+<ul>
+<li>&#xFF08;3&#xFF09;&#x63A5;&#x6536;&#x4FE1;&#x606F;<pre><code>  byte[] Receive(IpEndPoint)
+  &#x8BE5;&#x65B9;&#x6CD5;&#x662F;&#x4E00;&#x4E2A;&#x963B;&#x585E;&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6536;&#x5230;&#x6570;&#x636E;&#xFF0C;&#x4F1A;&#x4E00;&#x76F4;&#x5728;&#x8BE5;&#x65B9;&#x6CD5;&#x4E0A;&#x7B49;&#x5F85;&#x3002;
+</code></pre></li>
+</ul>
+<h4 id="&#x7A0B;&#x5E8F;&#x793A;&#x4F8B;">&#x7A0B;&#x5E8F;&#x793A;&#x4F8B;</h4>
+<h5 id="&#x5B9E;&#x73B0;&#x5E7F;&#x64AD;&#x529F;&#x80FD;">&#x5B9E;&#x73B0;&#x5E7F;&#x64AD;&#x529F;&#x80FD;</h5>
+<ul>
+<li>&#x53D1;&#x9001;&#x7AEF;&#xFF1A;
+&#x5176;&#x5B9E;UDP&#x5E7F;&#x64AD;&#x5C31;&#x662F;&#x5411;255.255.255.255&#x53D1;&#x9001;&#x6570;&#x636E;&#xFF0C;&#x63A5;&#x6536;&#x7AEF;&#x53EA;&#x9700;&#x7ED1;&#x5B9A;UDP&#x5E7F;&#x64AD;&#x7684;&#x7AEF;&#x53E3;&#x53F7;&#x5373;&#x53EF;&#x3002;&#x53D1;&#x9001;&#x7AEF;&#xFF0C;&#x53D1;&#x9001;&#x7684;&#x5730;&#x5740;&#xFF0C;255.255.255.255&#xFF1A;Port&#xFF0C;&#x5373;&#xFF0C;IPAddress.Broadcast&#xFF1A;Port&#x3002;</li>
+</ul>
+<pre><code class="lang-cpp">UdpClient UDPsend = <span class="hljs-keyword">new</span> UdpClient(newIPEndPoint(IPAddress.Any, <span class="hljs-number">0</span>));
+<span class="hljs-comment">//&#x5176;&#x5B9E;IPAddress.Broadcast &#x5C31;&#x662F; 255.255.255.255</span>
+IPEndPoint endpoint = newIPEndPoint(IPAddress.Broadcast, <span class="hljs-number">8080</span>);
+byte[] buf = Encoding.Default.GetBytes(<span class="hljs-string">&quot;This is UDPbroadcast&quot;</span>);
+UDPsend.Send(buf, buf.Length, endpoint);
+</code></pre>
+<ul>
+<li>&#x63A5;&#x6536;&#x7AEF;&#xFF1A;
+&#x63A5;&#x6536;&#x7AEF;&#x4EC5;&#x9700;&#x7ED1;&#x5B9A;&#x53D1;&#x9001;&#x7AEF;&#x53D1;&#x9001;&#x65F6;&#x6307;&#x5B9A;&#x7684;&#x7AEF;&#x53E3;&#xFF0C;&#x4FBF;&#x53EF;&#x4EE5;&#x63A5;&#x6536;&#x5E7F;&#x64AD;&#x4FE1;&#x606F;</li>
+</ul>
+<pre><code class="lang-cpp">IPEndPoint LocalIp = <span class="hljs-keyword">new</span> IPEndPoint(IPAddress.Any, <span class="hljs-number">8080</span>);
+<span class="hljs-comment">//&#x4EFB;&#x610F;&#x5730;&#x5740;&#xFF0C;&#x7528;&#x4E8E;Receive&#x4E2D;&#x7684;ref&#x53C2;&#x6570;&#xFF0C;&#x8FD4;&#x56DE;&#x53D1;&#x9001;&#x7AEF;&#x7684;&#x5730;&#x5740;&#x3002;</span>
+IPEndPoint Remote = <span class="hljs-keyword">new</span> IPEndPoint(IPAddress.Any, <span class="hljs-number">0</span>);
+UdpClient udpClient = <span class="hljs-keyword">new</span> UdpClient(LocalIp);
+<span class="hljs-comment">//Receive&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;byte&#x6570;&#x7EC4;&#x3002;</span>
+byte[] d = udpClient.Receive(ref Remote);
+<span class="hljs-built_in">string</span> s = Encoding.UTF8.GetString(d, <span class="hljs-number">0</span>, d.Length);
+</code></pre>
+<h5 id="&#x5B9E;&#x73B0;&#x4E00;&#x5BF9;&#x4E00;&#x901A;&#x4FE1;">&#x5B9E;&#x73B0;&#x4E00;&#x5BF9;&#x4E00;&#x901A;&#x4FE1;</h5>
+<ul>
+<li>&#x53D1;&#x9001;&#x7AEF;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x5B9A;&#x4E49;&#x63A5;&#x6536;&#x7AEF;&#x7684;&#x5730;&#x5740;</span>
+IPEndPoint targetIp = newIPEndPoint(IPAddress.Parse(<span class="hljs-string">&quot;192.168.2.119&quot;</span>), <span class="hljs-number">8001</span>);
+UdpClient udpClient= <span class="hljs-keyword">new</span> UdpClient(<span class="hljs-number">0</span>);
+byte[] data = Encoding.UTF8.GetBytes(&#x201C;Hello&#x201D;);
+<span class="hljs-comment">//&#x53D1;&#x9001;&#x4FE1;&#x606F;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;&#x53D1;&#x9001;&#x7684;&#x5B57;&#x8282;&#x6570;</span>
+udpClient.Send(data, data.Length, targetIp);
+</code></pre>
+<ul>
+<li>&#x63A5;&#x6536;&#x7AEF;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x5B9A;&#x4E49;&#x672C;&#x5730;&#x5730;&#x5740;&#xFF0C;&#x7528;&#x4E8E;&#x4E0D;&#x65AD;&#x76D1;&#x542C;&#x8BE5;&#x5730;&#x5740;&#x6536;&#x5230;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x8BE5;&#x5730;&#x5740;&#x4E0E;&#x53D1;&#x9001;&#x7AEF;&#x7684;&#x53D1;&#x9001;&#x5730;&#x5740;//&#x4E00;&#x81F4;&#x3002;</span>
+IPEndPoint LocalIp = <span class="hljs-keyword">new</span> IPEndPoint(IPAddress.Any,<span class="hljs-number">8001</span>);
+<span class="hljs-comment">//&#x4EFB;&#x610F;&#x5730;&#x5740;&#xFF0C;&#x7528;&#x4E8E;Receive&#x4E2D;&#x7684;ref&#x53C2;&#x6570;&#xFF0C;&#x8FD4;&#x56DE;&#x53D1;&#x9001;&#x7AEF;&#x7684;&#x5730;&#x5740;&#x3002;</span>
+IPEndPoint Remote = <span class="hljs-keyword">new</span> IPEndPoint(IPAddress.Any, <span class="hljs-number">0</span>);
+UdpClient udpClient = <span class="hljs-keyword">new</span> UdpClient(LocalIp);
+<span class="hljs-comment">//Receive&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;byte&#x6570;&#x7EC4;&#x3002;</span>
+byte[] d = udpClient.Receive(ref Remote);
+<span class="hljs-built_in">string</span> s = Encoding.UTF8.GetString(d, <span class="hljs-number">0</span>, d.Length);
+</code></pre>
+<h5 id="&#x5B9E;&#x73B0;&#x4E00;&#x5BF9;&#x591A;&#x901A;&#x4FE1;&#xFF08;&#x7EC4;&#x64AD;&#xFF09;">&#x5B9E;&#x73B0;&#x4E00;&#x5BF9;&#x591A;&#x901A;&#x4FE1;&#xFF08;&#x7EC4;&#x64AD;&#xFF09;</h5>
+<p>IP&#x7EC4;&#x64AD;&#x901A;&#x4FE1;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x7EC4;&#x64AD;&#x5730;&#x5740;&#xFF0C;IP&#x7EC4;&#x64AD;&#x5730;&#x5740;&#x662F;&#x4E00;&#x7EC4;D&#x7C7B;IP&#x5730;&#x5740;&#xFF0C;&#x8303;&#x56F4;&#x4ECE;224.0.0.0 &#x5230;239.255.255.255&#x3002;&#x5176;&#x4E2D;&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x5730;&#x5740;&#x662F;&#x4E3A;&#x7279;&#x6B8A;&#x7684;&#x76EE;&#x7684;&#x4FDD;&#x7559;&#x7684;&#x3002;
+224.0.0.0&#x5230;224.0.0.255&#x7684;&#x5730;&#x5740;&#x6700;&#x597D;&#x4E0D;&#x8981;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x4EEC;&#x5927;&#x591A;&#x662F;&#x4E3A;&#x4E86;&#x7279;&#x6B8A;&#x7684;&#x76EE;&#x7684;&#x4FDD;&#x6301;&#x7684;&#xFF08;&#x6BD4;&#x5982;IGMP&#x534F;&#x8BAE;&#xFF09;&#x3002;
+&#x56E0;&#x6B64;&#x5982;&#x679C;&#x8BBE;&#x5B9A;&#x7684;IP&#x4E0D;&#x7B26;&#x5408;D&#x7C7B;IP&#x89C4;&#x5219;&#xFF0C;&#x5219;&#x7A0B;&#x5E8F;&#x62A5;&#x9519;&#x3002;</p>
+<ul>
+<li>&#x53D1;&#x9001;&#x7AEF;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x5B9A;&#x4E49;&#x7EC4;&#x64AD;&#x5730;&#x5740;&#xFF0C;&#x6CE8;&#x610F;&#x4E00;&#x5B9A;&#x8981;&#x662F;D&#x7C7B;&#x5E7F;&#x64AD;</span>
+IPEndPoint targetIp = <span class="hljs-keyword">new</span> IPEndPoint(IPAddress.Parse(<span class="hljs-string">&quot;226.1.1.2&quot;</span>),<span class="hljs-number">8001</span>);
+UdpClient udpClient= <span class="hljs-keyword">new</span> UdpClient(<span class="hljs-number">0</span>);
+byte[] data = Encoding.UTF8.GetBytes(&#x201C;Hello&#x201D;);
+<span class="hljs-comment">//&#x53D1;&#x9001;&#x4FE1;&#x606F;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;&#x53D1;&#x9001;&#x7684;&#x5B57;&#x8282;&#x6570;</span>
+udpClient.Send(data, data.Length, targetIp);
+</code></pre>
+<ul>
+<li>&#x63A5;&#x6536;&#x7AEF;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x5B9A;&#x4E49;&#x672C;&#x5730;&#x5730;&#x5740;&#xFF0C;&#x6CE8;&#x610F;&#x7AEF;&#x53E3;&#x4E00;&#x5B9A;&#x4E0E;&#x53D1;&#x9001;&#x7AEF;&#x53D1;&#x9001;&#x65F6;&#x6307;&#x5B9A;&#x7684;&#x7AEF;&#x53E3;&#x4E00;&#x81F4;</span>
+IPEndPoint LocalIp = <span class="hljs-keyword">new</span> IPEndPoint(IPAddress.Any,<span class="hljs-number">8001</span>);
+<span class="hljs-comment">//&#x4EFB;&#x610F;&#x5730;&#x5740;&#xFF0C;&#x7528;&#x4E8E;Receive&#x4E2D;&#x7684;ref&#x53C2;&#x6570;&#xFF0C;&#x8FD4;&#x56DE;&#x53D1;&#x9001;&#x7AEF;&#x7684;&#x5730;&#x5740;&#x3002;</span>
+IPEndPoint Remote = <span class="hljs-keyword">new</span> IPEndPoint(IPAddress.Any, <span class="hljs-number">0</span>);
+UdpClient udpClient = <span class="hljs-keyword">new</span> UdpClient(LocalIp);
+
+<span class="hljs-comment">//&#x52A0;&#x5165;&#x7EC4;&#x64AD;&#xFF0C;&#x4E0E;&#x53D1;&#x9001;&#x7AEF;&#x5B9A;&#x4E49;&#x7684;&#x7EC4;&#x64AD;&#x5730;&#x5740;&#x4E00;&#x81F4;&#xFF0C;&#x5FC5;&#x987B;&#x7B26;&#x5408;D&#x7C7B;IP&#x5730;&#x5740;&#xFF0C;&#x5426;&#x5219;&#x62A5;&#x9519;</span>
+udpClient.JoinMulticastGroup(IPAddress.Parse(<span class="hljs-string">&quot;226.1.1.2&quot;</span>));
+
+<span class="hljs-comment">//Receive&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;byte&#x6570;&#x7EC4;&#x3002;</span>
+byte[] d = udpClient.Receive(ref Remote);
+<span class="hljs-built_in">string</span> s = Encoding.UTF8.GetString(d, <span class="hljs-number">0</span>, d.Length);
+
+<span class="hljs-comment">//&#x79BB;&#x5F00;&#x8BE5;&#x591A;&#x64AD;&#x7EC4;</span>
+udpClient.DropMulticastGroup(IPAddress.Parse(<span class="hljs-string">&quot;226.1.1.2&quot;</span>));
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="udp-socket.html" class="navigation navigation-prev " aria-label="Previous page: 用socket实现UDP">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="tcp-socket.html" class="navigation navigation-next " aria-label="Next page: 用socket实现TCP: 同步方式">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"用udpclient实现UDP","level":"1.6.2","depth":2,"next":{"title":"用socket实现TCP: 同步方式","level":"1.6.3","depth":2,"path":"tcp-socket.md","ref":"tcp-socket.md","articles":[]},"previous":{"title":"用socket实现UDP","level":"1.6.1","depth":2,"path":"udp-socket.md","ref":"udp-socket.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"udp-udpclient.md","mtime":"2019-05-30T03:43:49.683Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-30T03:41:54.637Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
